@@ -16,7 +16,7 @@
 title: Simply Physics
 email: raygnordstrom@gmail.com
 description: Physics ramblings by an alleged figure skater.
-baseurl: /docs # the subpath of your site, e.g. /blog
+baseurl: /simplyphysics # the subpath of your site, e.g. /blog
 url: https://rgnord.github.io # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: 
 github_username: RGNORD
