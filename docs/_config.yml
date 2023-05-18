@@ -23,7 +23,8 @@ github_username: RGNORD
 
 # Build settings
 markdown: kramdown
-theme: minima
+#theme: minima
+remote-theme: riggraz/no-style-please
 #remote_theme: riggraz/no-style-please
 plugins:
   - jekyll-feed
