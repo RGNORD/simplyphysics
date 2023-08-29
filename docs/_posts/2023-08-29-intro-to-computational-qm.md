@@ -188,7 +188,7 @@ $$\begin{aligned}
 The second derivative approximation (well, one of them) is
 
 $$\begin{aligned}
-    \frac{d^2f}{dx^2} = \frac{f(x+h)+f(x-h)-2f(x)}{(\Delta x)^2}\end{aligned}$$
+    \frac{d^2f}{dx^2} = \frac{f(x+\Delta x)+f(x-\Delta x)-2f(x)}{(\Delta x)^2}\end{aligned}$$
 
 (Can you derive this? Use the backward-difference definition for the
 derivative on the first derivative!)
