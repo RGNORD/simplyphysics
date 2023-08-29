@@ -3,7 +3,7 @@ title: A Gentle Introduction to Computational Quantum Mechanics
 layout: post
 tag: computational quantum mechanics
 tag: quantum mechanics
-category: quantum mechanics
+categories: ["computational quantum mechanics"]
 ---
 
 This little text is intended as a very simple introduction to
