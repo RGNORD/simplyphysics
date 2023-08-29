@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>A Gentle Introduction to Computational Quantum Mechanics | Simply Physics</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="A Gentle Introduction to Computational Quantum Mechanics" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This little text is intended as a very simple introduction to computational quantum mechanics. There are many books devoted to the topic, filled with one complicated algorithm after the other. Many people devote their whole careers to computational quantum mechanics. It’s harder to find something that allows a total beginner to get started." />
+<meta property="og:description" content="This little text is intended as a very simple introduction to computational quantum mechanics. There are many books devoted to the topic, filled with one complicated algorithm after the other. Many people devote their whole careers to computational quantum mechanics. It’s harder to find something that allows a total beginner to get started." />
+<link rel="canonical" href="http://localhost:4000/simplyphysics/quantum%20mechanics/2023/08/29/intro-to-computational-qm.html" />
+<meta property="og:url" content="http://localhost:4000/simplyphysics/quantum%20mechanics/2023/08/29/intro-to-computational-qm.html" />
+<meta property="og:site_name" content="Simply Physics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-08-29T00:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="A Gentle Introduction to Computational Quantum Mechanics" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-08-29T00:00:00+03:00","datePublished":"2023-08-29T00:00:00+03:00","description":"This little text is intended as a very simple introduction to computational quantum mechanics. There are many books devoted to the topic, filled with one complicated algorithm after the other. Many people devote their whole careers to computational quantum mechanics. It’s harder to find something that allows a total beginner to get started.","headline":"A Gentle Introduction to Computational Quantum Mechanics","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/simplyphysics/quantum%20mechanics/2023/08/29/intro-to-computational-qm.html"},"url":"http://localhost:4000/simplyphysics/quantum%20mechanics/2023/08/29/intro-to-computational-qm.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/simplyphysics/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/simplyphysics/feed.xml" title="Simply Physics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/simplyphysics/">Simply Physics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/simplyphysics/about/">About</a><a class="page-link" href="/simplyphysics/categories/">Categories</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">A Gentle Introduction to Computational Quantum Mechanics</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-08-29T00:00:00+03:00" itemprop="datePublished">Aug 29, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>This little text is intended as a very simple introduction to
+computational quantum mechanics. There are many books devoted to the
+topic, filled with one complicated algorithm after the other. Many
+people devote their whole careers to computational quantum mechanics.
+It’s harder to find something that allows a total beginner to get
+started.</p>
+
+<p>Unfortunate, isn’t it? After all, you don’t teach a fella how to drive
+by putting him in a Formula 1 car; you don’t teach a soldier to fire a
+weapon by placing him in front line combat; you can’t teach a child to
+run a marathon when she has yet to take her first steps.</p>
+
+<p>Fortunately, it’s not too difficult to write programs that solve the
+quantum equations on a computer. In fact, we can solve the problem and
+plot the solution in just a few lines of Python code. To understand
+those lines, though, takes a little bit of work. It’s easy to see a
+painting and say "well, just take a brush and move it around the paper
+a bit!" It’s a bit harder to do that in practice. In the cases we’ll
+solve, though, it’s not that difficult. All I require of the reader is
+the basics of linear algebra, calculus and some programming knowledge,
+that’s all; the linear algebra and calculus are a bare minimum for
+quantum mechanics, and programming should go without saying since we’re
+doing computational work!</p>
+
+<p>Hopefully the reader doesn’t already feel betrayed — I did say I
+wouldn’t teach a kid to run a marathon before they can walk. In this
+case, though, knowing some calculus and linear algebra is the equivalent
+of standing up. If you haven’t yet heard of those, you have two options:
+don’t read further or just blindly copy the code to see the end results
+to get yourself motivated to learn calculus.</p>
+
+<p>I will program in Python, so to follow along, make sure you have numpy
+and matplotlib installed. Then write these at the top of your file:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span></code></pre></figure>
+
+<p>We’re ready to go! We’ll solve the time-independent Schrödinger equation
+in one dimension</p>
+
+\[\begin{aligned}
+    \bigg( -\frac{1}{2} \frac{d^2}{dx^2} + V(x)\bigg)\psi (x) = E\psi (x)\end{aligned}\]
+
+<p>If you’ve taken quantum mechanics, you might have heard that this is an
+eigenvalue equation, and that’s one of the reasons Schrödinger’s
+equation produces "quantization" (discrete energy levels with allowed
+values some distance apart). But if you know a bit of linear algebra,
+you know that eigenvalues are something <em>matrices</em> have. So what the
+hell do I mean, eigenvalues? That’s not a matrix on the left hand side!</p>
+
+<h1 id="what-do-you-mean-eigenvalues">What Do You Mean, Eigenvalues?</h1>
+
+<p>The bad news is that the theory of "eigenvalues" of operators such as
+$-\frac{1}{2}\frac{d^2}{dx^2}$ is pretty complicated. The good news is
+that we don’t need it, because we can approximate this operator as a
+matrix.</p>
+
+<p>I can hear you huffing and puffing in indignation. How on earth could a
+derivative be a matrix?</p>
+
+<p>Calm yourself, all will be revealed. Let’s think about what we need to
+fit the equation on a computer.</p>
+
+<p>First of all, we don’t have an infinite amount of memory. Unfortunately,
+$\psi (x)$ contains an infinite number of points. That’s not some
+special magic of the wave function, it’s true for any function defined
+on real numbers – like $f(x) = x^2$. Since there’s an infinite number
+of real numbers in any interval, the function is also defined on an
+infinite number of points.</p>
+
+<p>Too bad we don’t have an infinite amount of memory to store this
+infinity of numbers. We have to store just a finite number instead. Can
+you think of any way to do so?</p>
+
+<p>One way – the one we’ll follow – is to just divide some finite
+interval in to a number of smaller bits, and define just one number as
+the value of the function in these bits.</p>
+
+<p>Confused? Not to worry, here’s what I mean. Let’s suppose we want to
+write the function $f(x) = x^2$ in the interval [0,1]. We might divide
+this in to a number of smaller intervals:</p>
+
+\[\begin{aligned}
+= [0,0.1]\cup [0.1,0.2]\cup \dots \end{aligned}\]
+
+<p>Then we say, the value in the first small interval is, for example, the average value of the
+function at the starting point and end point. So, in the first interval,
+it’s $\frac{f(0)+f(0.1)}{2} = \frac{0^2 + 0.1^2}{2} = 0.005$, and so on.
+These values then form the discrete version of the function.</p>
+
+<p>What does this have to do with our Schrödinger equation? Well, look at
+the derivative on the left hand side – we have to define it on a finite
+set of points instead of a continuous function. Let’s recall the
+definition of a derivative:</p>
+
+\[\begin{aligned}
+    \frac{df}{dx} = \lim _{h\rightarrow 0}\frac{f(x+h)-f(x)}{h}.\end{aligned}\]
+
+<p>We now replace the limit $h\rightarrow 0$ with the limit
+$h\rightarrow \Delta x$, with $\Delta x$ the length of the small
+intervals. For instance, the derivative at the first interval of $x^2$
+would be</p>
+
+\[\begin{aligned}
+    \frac{f(0.1)-f(0)}{0.1} = \frac{0.1^2-0^2}{0.1} = 0.1\end{aligned}\]
+
+<p>Let’s see what this looks like graphically. If you want to generate
+these plots yourself, it’s actually simple: we can create evenly spaced
+values using numpy and then use matplotlib to get the figures. Like so:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">xcont</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100000</span><span class="p">)</span> <span class="c1"># "Continuous" x
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># Discrete approximation
+</span>
+<span class="n">xsqdisc</span> <span class="o">=</span> <span class="p">[]</span> 
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="c1"># Filling the array with the approximation
+</span>    <span class="n">xsqdisc</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># outlined in the text
+</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"$x$"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"$x^2$"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">xsqdisc</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"indigo"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xcont</span><span class="p">,</span><span class="n">xcont</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span> <span class="c1"># This creates the silvery vertical lines
+</span>    <span class="n">plt</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">"silver"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span></code></pre></figure>
+
+<p><img src="/simplyphysics/assets/xsq.png" alt="The continuous function $f(x)=x^2$ (the line) and its discrete
+approximation (the dots)." /></p>
+
+<p>You see that the dots land pretty nicely on the line; perhaps this is a
+good approximation to our function! Beware, though – if the function
+changes too much within the span of one interval, then we might get a
+very poor approximation if our intervals are too large. For example,
+look at this approximation of a rapidly oscillating $\sin (x)$:</p>
+
+<p><img src="/simplyphysics/assets/sinus.png" alt="The continuous function $f(x)=\sin (100x)$ (the line) and its discrete
+approximation (the dots)." /></p>
+
+<p>Not very good, is it? The function oscillates too much between each
+interval, so our approximation is way off. Obviously, trying to compute
+the derivative using this approximation would be especially useless,
+since it would miss all the detail in between each interval! By the way,
+you should try to generate that picture yourself as well, as practice.</p>
+
+<p>So, the key thing is to have a sufficient number of points to guarantee
+a good approximation. More points = better, typically.</p>
+
+<p>What bearing does this have on our Schrödinger equation? Well, every
+school boy can now guess that if we represent the wave function as a set
+of points:</p>
+
+\[\begin{aligned}
+    \psi (x) \approx \begin{bmatrix}
+        \psi (x_1)\\
+        \psi (x_2)\\
+        \psi (x_3)\\
+        \vdots
+    \end{bmatrix}\end{aligned}\]
+
+<p>then the discrete approximation of the Hamiltonian must be a
+finite-dimensional matrix. So it’s just a normal eigenvalue problem
+after all, and it makes a whole lot of sense to talk about eigenvalues.</p>
+
+<h1 id="about-that-derivative">About That Derivative</h1>
+
+<p>Well, then, what matrix is it? Remember how we defined the derivative on
+finite intervals:</p>
+
+\[\begin{aligned}
+    \frac{df}{dx} = \frac{f(x+\Delta x) - f(x)}{\Delta x}\end{aligned}\]
+
+<p>The second derivative approximation (well, one of them) is</p>
+
+\[\begin{aligned}
+    \frac{d^2f}{dx^2} = \frac{f(x+h)+f(x-h)-2f(x)}{(\Delta x)^2}\end{aligned}\]
+
+<p>(Can you derive this? Use the backward-difference definition for the
+derivative on the first derivative!)</p>
+
+<p>So how do we find a matrix, say $D$, the effect of which is:</p>
+
+\[\begin{aligned}
+    D\begin{bmatrix}
+        \vdots\\
+        \psi (x_i)\\
+        \vdots
+    \end{bmatrix} =\frac{1}{(\Delta x)^2} \begin{bmatrix}
+        \vdots\\
+        \psi (x_{i+1}) + \psi(x_{i-1}) - 2\psi (x_i)\\
+        \vdots
+    \end{bmatrix}\end{aligned}\]
+
+<p>At first, this might seem like a daunting task, since we don’t even know how big our matrix needs to be.
+Luckily, there’s a simple pattern here which we can exploit. We can
+easily discover it by writing the matrix multiplication by components.
+If our $\psi$ has $N$ points, then the $i$th element of the
+multiplication is</p>
+
+\[\begin{aligned}
+    (D\vec{\psi})_i = \sum _{j=1}^N D_{ij}\psi _j\end{aligned}\]
+
+<p>where the $D_{ij}$ indicates the elements in $i$th row and $j$th column.
+Convince yourself that this is indeed the matrix multiplication rule you
+learned in linear algebra, if you don’t see it immediately! Try it with
+something simple, like a 2-by-2 matrix and a 2-dimensional vector.</p>
+
+<p>Well, we know what we want on the right hand side. When $j = i$, we want
+the coefficient $-2$, so $D_{ii} = -2$. When $j=i\pm 1$, we want the
+coefficient $D_{i(i\pm 1)} = 1$. The rest of them must be zero. Then:</p>
+
+\[\begin{aligned}
+    \sum _{j=1}^N D_{ij}\psi _j = D_{ii}\psi _i + D_{i(i+1)}\psi _{i+1} + D_{i(i-1)}\psi _{i-1} = \psi (x_{i+1}) + \psi(x_{i-1}) - 2\psi (x_i)\end{aligned}\]
+
+<p>Then we just need to multiply by $1/(\Delta x) ^2$, which is just a
+constant. So we end up with the matrix:</p>
+
+\[\begin{aligned}
+    D = \frac{1}{(\Delta x)^2} \begin{bmatrix}
+        -2 &amp; 1 &amp; 0 &amp;  \cdots \\
+        1 &amp; -2 &amp; 1 &amp;  \ddots  \\
+        0 &amp; 1 &amp; -2 &amp;  \ddots \\
+        \vdots &amp; \ddots &amp; \ddots &amp; \ddots 
+    \end{bmatrix}\end{aligned}\]
+
+<p>The three central diagonals are non-zero, everything else is zero. Now remember that in the Hamiltonian,
+we also have the factor $-\frac{1}{2}$, so we have to multiply that in
+as well.</p>
+
+<p>Let’s build this matrix in Python. Once again, numpy to the rescue.
+There’s a function called diagflat that allows us to easily make
+matrices from vectors. The second argument indicates how many diagonals
+above the central diagonal we want to put our vector. Those are smaller
+than the central diagonal, so we need smaller arrays of coefficients.
+Like so:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">D2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">/</span><span class="n">dx</span><span class="o">/</span><span class="n">dx</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">diagflat</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">))</span> \
+<span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="n">diagflat</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="n">diagflat</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span></code></pre></figure>
+
+<p>Let’s take a step back for a moment. If you’ve ever solved the
+Schrödinger equation, you know that you need boundary conditions.
+Without them, solving it is like wandering around in an unknown city
+with no map – you’re going to wake up in a ditch with a hell of a
+hangover. Or something.</p>
+
+<p>Well, we’ve just constructed a matrix, so what are the boundary
+conditions on the $\psi$ given by it? Do the multiplications to examine
+the first and last element of the $\psi$-vector after multiplication:</p>
+
+\[\begin{aligned}
+    \psi = \begin{bmatrix}
+        \psi _{x_2} - 2\psi _{x_1}\\
+        \vdots \\
+        \psi _{N-1} - 2\psi _{x_N}
+    \end{bmatrix}\end{aligned}\]
+
+<p>See something funny? Only two terms. That’s because our matrix sort of
+"cuts off" at the edges. What does this mean? Well, evidently
+$\psi_{x_0}$ vanishes from the equation, so it must be 0! We’re so
+clever that we’ve taken care of the boundary conditions without even
+trying. Three cheers for us!</p>
+
+<p>Basically, then, this system should depict a particle in a box - a
+favorite model of physics teachers everywhere. And fortunately, this
+system can be solved analytically. The eigenenergies are</p>
+
+\[\begin{aligned}
+    E_n = \frac{\pi ^2n^2}{2L^2}\end{aligned}\]
+
+<p>For simplicity, why not make our box length $L=1$?</p>
+
+<p>To recap, taking the matrix we called D2 in Python, we should get as the
+first eigenvalue $\pi ^2/2$, the second eigenvalue $\pi ^2\cdot 4 /2$,
+and so on. Well, let’s solve them then. Luckily numpy makes this easy
+for us. Add this to your code:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">e</span><span class="p">,</span><span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">D2</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="n">e</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>\ 
+ <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span></code></pre></figure>
+
+<p>You should see them match very well. But you’ll notice that the higher
+eigenvalues are off by larger margin. Why?</p>
+
+<p>The higher the energy, the more wiggly the wave function is. To see
+this, you can plot the wave functions; they’re now stored in the
+variable vec so that vec[:,0] is the first eigenvector, vec[:,1] the
+second and so on. But the more wiggly the wave function, the worse our
+division in to intervals is likely to be, as we saw before withou our
+$\sin (x)$ example. So the derivative matrix is going to be a worse
+approximation!</p>
+
+<p>Don’t believe me? Here’s the first few wave functions:</p>
+
+<p><img src="/simplyphysics/assets/waves.png" alt="The first few wave functions of the particle in a box." /></p>
+
+<p>See? More wiggly. More change over one interval. Worse approximation.</p>
+
+<h1 id="but-what-about-the-potential">But What About The Potential?</h1>
+
+<p>Ah, but we haven’t dealt with the pesky $V(x)$ yet! Is it because it’s
+too difficult? No – I’ve left it for last so that you can have an easy
+finish. It’s like taking an exam, you don’t want to do the toughest
+problem last, when you’re already exhausted. (Incidentally, I almost
+always did that, anxious to at least get the easy stuff out of the way.
+Then I couldn’t focus on the hard ones. Oh well..)</p>
+
+<p>What’s the effect of a potential depending on $x$ on $\psi (x)$? Well,
+you just multiply $\psi (x)$ at each point $x$. So in matrix terms,</p>
+
+\[\begin{aligned}
+    \hat{V}\vec{\psi} = \begin{bmatrix}
+        \vdots \\
+        V(x_i)\psi (x_i)\\
+        \cdots
+    \end{bmatrix}.\end{aligned}\]
+
+<p>A moment’s thought shows that this must be a diagonal matrix. So, for example, 
+the harmonic oscillator potential is as simple as:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">xsq</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">diagflat</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></code></pre></figure>
+
+<p>The total Hamiltonian is then the sum D2+xsq. Make sure this gives the
+correct eigenvalues for a harmonic oscillator, too!</p>
+
+<h1 id="recap-conclusions-where-to-from-here">Recap, conclusions, where to from here?</h1>
+
+<p>So there we go, this computational QM stuff isn’t so hard after all.
+Declare yourself the master – nay, the PhD of – nay, the PROFESSOR of
+computational quantum mechanics, right?</p>
+
+<p>Well, not quite. The method we’ve applied here is very naive and not
+reliable or workable for complicated systems. Unfortunately the number
+of points needed tends to sort of explode in 3 dimensions. This method
+is not really used by the professionals.</p>
+
+<p>What is done instead is that you guess the form of the wave function.
+Instead of writing $\psi$ on a finite set of points, you expand it in
+terms of some known functions:</p>
+
+\[\begin{aligned}
+    \psi (x) = \sum _i^{N} c_i \phi _i(x).\end{aligned}\]
+
+<p>We choose $\phi _i$ in a clever way so that they’re already pretty close to the
+solution. Doing this is as much art as it is science, but even a
+relatively bad guess of this form leads to a numerically much easier
+problem and thus better results. That’s for another time, though.</p>
+
+<p>You should use the code we have to explore random potentials you find
+interesting. Send me email if you see something funny. I like funny
+things.</p>
+
+  </div><a class="u-url" href="/simplyphysics/quantum%20mechanics/2023/08/29/intro-to-computational-qm.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/simplyphysics/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Simply Physics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Simply Physics</li><li><a class="u-email" href="mailto:raygnordstrom@gmail.com">raygnordstrom@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/RGNORD"><svg class="svg-icon"><use xlink:href="/simplyphysics/assets/minima-social-icons.svg#github"></use></svg> <span class="username">RGNORD</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Physics ramblings by an alleged figure skater.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

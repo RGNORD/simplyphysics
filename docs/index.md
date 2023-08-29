@@ -4,3 +4,4 @@
 
 layout: home
 ---
+You can browse posts by category in [Categories.](/simplyphysics/categories/)
