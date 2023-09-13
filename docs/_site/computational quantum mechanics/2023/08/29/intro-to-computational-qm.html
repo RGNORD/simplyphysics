@@ -5,9 +5,11 @@
       tex2jax: {
         inlineMath: [['$','$'], ['\\(','\\)']],
         processEscapes: true
-      }
+      },
+      TeX: { equationNumbers: { autoNumber: "AMS" } }
     });
     </script>
+    <script>window.MathJax = { tex: { tags: 'all' } }; </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -233,7 +235,7 @@ finite intervals:</p>
 <p>The second derivative approximation (well, one of them) is</p>
 
 \[\begin{aligned}
-    \frac{d^2f}{dx^2} = \frac{f(x+h)+f(x-h)-2f(x)}{(\Delta x)^2}\end{aligned}\]
+    \frac{d^2f}{dx^2} = \frac{f(x+\Delta x)+f(x-\Delta x)-2f(x)}{(\Delta x)^2}\end{aligned}\]
 
 <p>(Can you derive this? Use the backward-difference definition for the
 derivative on the first derivative!)</p>

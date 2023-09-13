@@ -1,4 +1,633 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/simplyphysics/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/simplyphysics/" rel="alternate" type="text/html" /><updated>2023-08-29T16:16:02+03:00</updated><id>http://localhost:4000/simplyphysics/feed.xml</id><title type="html">Simply Physics</title><subtitle>Physics ramblings by an alleged figure skater.</subtitle><entry><title type="html">A Gentle Introduction to Computational Quantum Mechanics</title><link href="http://localhost:4000/simplyphysics/computational%20quantum%20mechanics/2023/08/29/intro-to-computational-qm.html" rel="alternate" type="text/html" title="A Gentle Introduction to Computational Quantum Mechanics" /><published>2023-08-29T00:00:00+03:00</published><updated>2023-08-29T00:00:00+03:00</updated><id>http://localhost:4000/simplyphysics/computational%20quantum%20mechanics/2023/08/29/intro-to-computational-qm</id><content type="html" xml:base="http://localhost:4000/simplyphysics/computational%20quantum%20mechanics/2023/08/29/intro-to-computational-qm.html">&lt;p&gt;This little text is intended as a very simple introduction to
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/simplyphysics/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/simplyphysics/" rel="alternate" type="text/html" /><updated>2023-09-13T17:47:43+03:00</updated><id>http://localhost:4000/simplyphysics/feed.xml</id><title type="html">Simply Physics</title><subtitle>Physics ramblings by an alleged figure skater.</subtitle><entry><title type="html">Guessing Physical Laws</title><link href="http://localhost:4000/simplyphysics/2023/09/22/guessing-physical-laws.html" rel="alternate" type="text/html" title="Guessing Physical Laws" /><published>2023-09-22T00:00:00+03:00</published><updated>2023-09-22T00:00:00+03:00</updated><id>http://localhost:4000/simplyphysics/2023/09/22/guessing-physical-laws</id><content type="html" xml:base="http://localhost:4000/simplyphysics/2023/09/22/guessing-physical-laws.html">&lt;p&gt;Theoretical physics is a precise business. You choose your principles
+carefully, put them in to mathematical form and use rigorous logical
+deduction to infer consequences. Or perhaps you take a hithertho
+unexplained phenomenon and start from a known physical theory, using
+judicious approximations and clever calculation techniques to produce a
+brilliant explanation for its features. You might even write a computer
+program to apply numerical methods to theories and get your results that
+way. Either way, it’s clearly a job for the logical goober! That’s how
+you should do physics.&lt;/p&gt;
+
+&lt;p&gt;Well, except if you just want to play a guessing game. I mean…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Bohr deduced his famous atomic model by guessing physical principles
+that were totally wrong, he managed to get the right result anyway;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Maxwell used gears and other mechanical devices to explain his
+theory of electromagnetism, and those turned out to be totally
+useless;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Modified Newtonian dynamics was originally based on just guessing a
+generic form for Newton’s law of gravity;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Dirac derived his equation using mathematical methods and simply
+guessed the positron solutions were actually real particles&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;and on and on it goes.&lt;/p&gt;
+
+&lt;p&gt;So, hell, it’s pretty useful to know how to just wing it.
+Back-of-the-envelope calculations and leaps of logic abound in physics
+departments everywhere, and great discoveries are often made just as
+much by inspired guesswork as they are by logic. Still, there’s rules
+even to leaps; no matter how magical Michael Jordan’s jumps look, he
+can’t actually fly. Well, I don’t think so anyway. To be fair, a few of
+the videos I’ve seen seem to defy the laws of physics – for the sake of
+argument, suppose he doesn’t know how to fly to make my point make
+sense. Magical guesswork isn’t actually magical!&lt;/p&gt;
+
+&lt;p&gt;In this text, I’ll go over a few methods to just guess, using simple
+physical intuition, one particular example of a physical law: the
+Maxwell-Boltzmann speed distribution.&lt;/p&gt;
+
+&lt;h1 id=&quot;what-the-hell-do-you-know-anyway&quot;&gt;What the Hell Do You Know, Anyway?&lt;/h1&gt;
+
+&lt;p&gt;Our problem is to find the distribution of the speed of gas molecules in
+a room full of molecules. What is it that we know about this problem?&lt;/p&gt;
+
+&lt;p&gt;Well, any schoolboy knows that rooms feel different at different
+temperatures. Even a 5 year old pipsqueak can tell you that temperature
+differences are caused by the speed of the molecules whizzing about in
+the room. You can guess that the kind of the molecules matters, too –
+different speeds for different types. And you probably already knew in
+your mother’s womb that distributions are normalized; that is, if we
+have a speed distribution, then&lt;/p&gt;
+
+\[\int f(v) dv = 1\]
+
+&lt;p&gt;with $f(v)$ our mysterious distribution. We can perhaps make a further
+guess: presumably there’s nothing special about any of the directions –
+the distribution looks the same in $x$, $y$ and $z$ directions, so we
+can deal with them separately.&lt;/p&gt;
+
+&lt;p&gt;Well, you say, without further information this doesn’t amount to much.
+Unless I can use the principles I learned in my statistical physics
+class, there’s no way to make progress!&lt;/p&gt;
+
+&lt;p&gt;Or that’s what you would say if you were a &lt;em&gt;pathetic little weakling.&lt;/em&gt;
+Are you a pathetic weakling? No? Then let me introduce you to
+dimensional analysis.&lt;/p&gt;
+
+&lt;h1 id=&quot;theres-rules-to-combining-quantities&quot;&gt;There’s Rules To Combining Quantities&lt;/h1&gt;
+
+&lt;p&gt;You see, we just identified a number of things a speed distribution
+probably depends on:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The actual speed of the particles (obviously, since it’s a speed
+distribution)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The kind of molecule&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The temperature of the room&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The first one is evident, but the other two aren’t. Let’s talk about
+them.&lt;/p&gt;
+
+&lt;p&gt;First of all, we’re not really interested in the kind of molecule in the
+room, just some property of it. Unless you’re feeling confident and
+think you can solve this problem by starting from the quantum mechanics
+of molecules (if so, good luck, see you in 5 years). No, what we really
+want is just the inertia of the molecule, how hard it is to accelerate.
+In principle, if there were enough molecules in the room, or if they
+were big enough, then we might have to care about intermolecular
+interactions, but let’s just suppose they’re far enough apart to not
+really interact in a meaningful way. So we want the &lt;em&gt;mass&lt;/em&gt; of the
+molecules.&lt;/p&gt;
+
+&lt;p&gt;As for the temperature, I already told you that even a schoolboy knows
+temperature differences are measured by the speed – or more accurately,
+the kinetic energies – of the particles. So let’s simply call the
+quantity of interest here &quot;energy&quot;, for that is in fact what it is.&lt;/p&gt;
+
+&lt;p&gt;What now? We have three quantities, $v, m$ and $E$. We also know the
+normalization of the distribution. But this normalization gives us our
+first clue.&lt;/p&gt;
+
+&lt;p&gt;Notice how the end result of $\int f(v) dv$ is a pure number – no
+dimension? Let’s call the units of mass $[m] = M$, units of time $T$ and
+units of length $L$ (these could be anything – meters, inches, a fruit
+fly’s average wingspans – as long as you keep your units consistent).
+Then we know that $[f(v)] = [1/v] = T/L$, because $[dv]=L/T$. See how
+that works? The units of $f$ have to cancel out the units of integration
+measure $dv$, since the end result 1 doesn’t have units.&lt;/p&gt;
+
+&lt;p&gt;So we’re looking for a distribution that has units of $T/L$. How could
+we combine our quantities $m$, $E$ and $v$ to get units like that?
+Notice that $[E] = ML^2/T^2$ Think about it for a while, come up with
+options. Here are the easiest options I came up with:&lt;/p&gt;
+
+\[\begin{align}f(v) &amp;amp;\propto 1/v g\bigg(\frac{v^2m}{E}\bigg)\\
+    f(v) &amp;amp;\propto \sqrt{\frac{m}{E}}g\bigg(\frac{v^2m}{E}\bigg) \\
+    f(v) &amp;amp;\propto \frac{vm}{E}g\bigg(\frac{v^2m}{E}\bigg)\end{align}\]
+
+&lt;p&gt;The function $g$ is unknown, but must be a function of dimensionless
+quantity, since $1/v$ and $\sqrt{\frac{m}{E}}$ and $\frac{vm}{E}$
+already have the right dimensions (check for yourself!). The simplest
+dimensionless quantity you can construct from $v$, $m$ and $E$ is
+$v^2m/E$.&lt;/p&gt;
+
+&lt;p&gt;Alright, is there any way to eliminate any of these possibilities using
+our intuition? How do you think the distribution of the speeds should
+behave?&lt;/p&gt;
+
+&lt;p&gt;Well, I don’t know about you, but I don’t think that the distribution
+blowing up as $v\rightarrow 0$ seems very reasonable. I mean, maybe the
+slower speeds are more likely, but is that prefactor really supposed to
+be divergent? How would you even find a reasonable $g$ that would still
+integrate to a finite number over the infinite interval
+$v\in [0, \infty)$?&lt;/p&gt;
+
+&lt;p&gt;As for the third one, it suggests that the distribution is proportional
+directly to the speed and mass of the particles. Does it seem likely
+that $f(0) = 0$? Really, just a straight up zero at the origin? Maybe
+it’s possible – we can keep it in mind.&lt;/p&gt;
+
+&lt;p&gt;However, the middle one is the least offensive choice for at least my
+sensibilities (I also happen to know this guess produces the right
+answer, so my &quot;intuition&quot; is greatly aided by foreknowledge!) Since
+the dimensionful part doesn’t contain $v$, there’s no immediate
+pathologies that jump out.&lt;/p&gt;
+
+&lt;p&gt;Let’s go with the middle guess there. Our distribution is of the form
+(with $\alpha$ and $\gamma$) some yet to be determined constants)&lt;/p&gt;
+
+\[f(v) = \alpha \sqrt{\frac{m}{E}} g\bigg(\gamma \frac{v^2m}{E}\bigg)\]
+
+&lt;p&gt;We now need to find an appropriate $g$. It has to be some function that
+is integrable from 0 to $\infty$. Presumably, the speeds closer to 0 are
+way more likely than the tail end – we don’t have too many infinitely
+fast particles flying about, that would just be straight up painful. Try
+to find some functions that satisfy that property. Go on, I’ll wait.&lt;/p&gt;
+
+&lt;p&gt;You can probably find a bunch. You can plot them to see what they would
+look like, just pick some easy values for $m$ and $E$. However, we now
+remember the Central Limit Theorem, which says that everything is always
+the damn exponential distribution (well, it doesn’t quite say that, but
+close enough), so that&lt;/p&gt;
+
+\[g\bigg(\frac{v^2m}{E}\bigg) = e^{-\frac{\gamma v^2m}{E}}\]
+
+&lt;p&gt;Plot this – it certainly seems reasonable, right?&lt;/p&gt;
+
+&lt;p&gt;Supposing we’re right, is there some way to go even further? Can we
+guess $\alpha$ and $\gamma$?&lt;/p&gt;
+
+&lt;p&gt;Well, notice what we have in the exponential function: $mv^2$. Does that
+look like any form of energy you know of?&lt;/p&gt;
+
+&lt;p&gt;Right, it’s the kinetic energy of a particle if we take
+$\gamma = \frac{1}{2}$. So let’s plug that in! And, lucky for us, we now
+remember the normalization of the distribution:&lt;/p&gt;
+
+\[\int _0^\infty f(v)dv =\int _0^\infty\alpha \sqrt{\frac{m}{E}} g\bigg( \frac{v^2m}{2E}\bigg)dv = 1 \\
+    \implies \alpha \frac{1}{2}\sqrt{2\pi } = 1 \\
+    \implies \alpha = \sqrt{\frac{2}{\pi }}\]
+
+&lt;p&gt;So, our answer is&lt;/p&gt;
+
+\[f(v) = \sqrt{\frac{2}{\pi }} \sqrt{\frac{m}{E}}e^{-\frac{\gamma v^2m}{E}}\]
+
+&lt;p&gt;which, wouldn’t you know it, is exactly right.&lt;/p&gt;
+
+&lt;h1 id=&quot;you-cheated&quot;&gt;You Cheated!&lt;/h1&gt;
+
+&lt;p&gt;&quot;Ah yes&quot;, you say, &quot;of course you’re able to do this because you
+cheated! You already knew the end result, and used that as a guide! You
+can’t use this for anything real!&quot;&lt;/p&gt;
+
+&lt;p&gt;First of all, who the hell do you think you are, assaulting me with the
+truth??&lt;/p&gt;
+
+&lt;p&gt;It’s not quite that simple, though. As I said, real physicists making
+real discoveries have used various forms of guesswork all throughout
+history (see Anthony Zee’s book &quot;Fly by Night Physics&quot; for plenty of
+examples of exactly this sort of historical reasoning). Order of
+magnitude estimates, dimensional analysis, intuitively inspired
+approximations – all of these are tricks you can find in the literature
+that have really been used for research, not just when you know the end
+result.&lt;/p&gt;
+
+&lt;p&gt;It might also help you if you’re a student. Suppose you only very
+vaguely remember some formula or end result of a calculation, and it’s
+asked on the exam. Well, if you mostly remember it – like was the case
+for me and the Maxwell-Boltzmann distribution when I did this
+calculation – you can guess your way to the right solution using this
+kind of reasoning. Mr. Zero Points turns in to Mr. Partial Credit.&lt;/p&gt;
+
+&lt;p&gt;What are the principles we used here?&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Identify the relevant quantities at play; in our case, mass, energy,
+speed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make the necessary approximations. We implicitly approximated that
+the particles are non-relativistic, and we don’t care about
+intermolecular forces or quantum mechanical effects; basically, it’s
+a normal room full of something like air.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Perform dimensional analysis on the quantity you’re interested in
+calculating. Find any combinations of the quantities that you
+identified that give the right units and satisfy any other
+constraints you identified. Eliminate the combinations that don’t
+fit the constraints; if more than one combination remains, pick the
+one that seems right to you based on your intuition.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Try to fix any undetermined constants by some bullshit argument if
+possible; if not, just leave them there.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It is clear that this sort of reasoning can’t give you the same
+certainty as a logical deduction from well-justified principles. It’s
+equally clear that it’s far easier to use this method than to come up
+with the correct fundamental principles for a problem you’re not all
+that familiar with. If you got it wrong – eh, it happens, whatever.&lt;/p&gt;</content><author><name></name></author><summary type="html">Theoretical physics is a precise business. You choose your principles carefully, put them in to mathematical form and use rigorous logical deduction to infer consequences. Or perhaps you take a hithertho unexplained phenomenon and start from a known physical theory, using judicious approximations and clever calculation techniques to produce a brilliant explanation for its features. You might even write a computer program to apply numerical methods to theories and get your results that way. Either way, it’s clearly a job for the logical goober! That’s how you should do physics.</summary></entry><entry><title type="html">An Emergency Help Document for Those Horrified, Disgusted or Otherwise Afflicted by Infinities in QFT</title><link href="http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/09/15/horrifying-infinities.html" rel="alternate" type="text/html" title="An Emergency Help Document for Those Horrified, Disgusted or Otherwise Afflicted by Infinities in QFT" /><published>2023-09-15T00:00:00+03:00</published><updated>2023-09-15T00:00:00+03:00</updated><id>http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/09/15/horrifying-infinities</id><content type="html" xml:base="http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/09/15/horrifying-infinities.html">&lt;p&gt;You’re listening to a lecture on quantum field theory. Finally, the
+equations of motion have been derived, the fields quantized and the
+reduction formulae derived. It is finally time to solve a real QFT
+problem – to do a perturbation theory calculation!&lt;/p&gt;
+
+&lt;p&gt;All of a sudden – unprompted and unwanted – the calculation leads to a
+divergent integral. WHAT?? How can a physical quantity be infinite?&lt;/p&gt;
+
+&lt;p&gt;Before you descend in to a frenzy, the lecturer provides much-needed
+assurance. There’s no problem, he explains – all we have to do is to
+regularize and renormalize! Just pretend the integral is finite after
+all by imposing some cutoff $\Lambda$ (&quot;regularize&quot;), and add some
+terms to your theory that remove the terms that go to infinity as the
+cutoff $\Lambda$ is removed (&quot;renormalize&quot;).&lt;/p&gt;
+
+&lt;p&gt;You’re horrified, of course. What do you mean, $renormalize?$ How can
+you just go ahead and pretend the integral is finite, then erase the
+terms you didn’t like? Curse this quantum field theory; it’s all
+nonsense anyway; there’s no way this can be rigorous; I should’ve
+studied art history..&lt;/p&gt;
+
+&lt;p&gt;I’m here to tell you that the situation with infinities isn’t as bad as
+all that – it’s much worse. I’m also here to tell you that this is no
+reason to switch to art history. What sort of a coward fears a few
+measly infinities?&lt;/p&gt;
+
+&lt;h1 id=&quot;infinities-everywhere&quot;&gt;Infinities everywhere&lt;/h1&gt;
+
+&lt;p&gt;Instead of dealing with a difficult theory like QFT, let’s deal with
+something our tiny brains are more in tune with: polynomials and their
+roots.&lt;/p&gt;
+
+&lt;p&gt;That’s right, it’s back to school. Polynomials! You can do them using
+perturbation theory, too.&lt;/p&gt;
+
+&lt;p&gt;Suppose our polynomial is&lt;/p&gt;
+
+\[\begin{align}
+    \epsilon x^2 - 2x + 1 = 0 \label{eq:seconddegree}\end{align}\]
+
+&lt;p&gt;and we say $\epsilon$ is a small number. Then we might guess the answer
+is of the form&lt;/p&gt;
+
+\[\begin{equation}
+    x = x_0 + \epsilon x_1 + \mathcal{O}(\epsilon ^2)\end{equation}\]
+
+&lt;p&gt;Let’s insert our guess in to our polynomial:&lt;/p&gt;
+
+\[\begin{equation}
+    \epsilon x^2 - 2x + 1 = \epsilon x_0^2 - 2(x_0 + \epsilon x_1)+1 = 0.\end{equation}\]
+
+&lt;p&gt;We’re neglecting all but first order terms. Remember that this must hold
+for arbitrary small $\epsilon$, so that we can divide this in to two
+equations, one involving the terms of zeroth order in $\epsilon$, and a
+first order equation. Like so:&lt;/p&gt;
+
+\[\begin{equation}
+    - 2x_0 + 1 + \epsilon (x_0^2 - 2x_1)  = 0\\
+    \implies \begin{cases}
+        - 2x_0 + 1   = 0\\
+        x_0^2 - 2x_1  = 0
+    \end{cases}\end{equation}\]
+
+&lt;p&gt;Well, sure enough, we can solve the first equation easily: the solution
+is $x_0 = \frac{1}{2}$. Inserting that in to the second equation, we get&lt;/p&gt;
+
+\[\begin{equation}
+    x_0^2 - 2x_1 = 0 \implies x_1 = \frac{1}{8}.\end{equation}\]
+
+&lt;p&gt;So the solution to our perturbation problem is
+$x = \frac{1}{2} + \frac{1}{8}\epsilon$. Easy!&lt;/p&gt;
+
+&lt;p&gt;But wait – what? Second degree polynomials have two roots, everyone
+knows that. What happened?&lt;/p&gt;
+
+&lt;p&gt;Well, we’ve all learned the formula for solving second degree
+polynomials, so let’s apply it. The exact solution of
+$\eqref{eq:seconddegree}$ is&lt;/p&gt;
+
+\[\begin{equation}
+    x_-  = \frac{1-\sqrt{1-\epsilon}}{\epsilon}\\
+    x_+  = \frac{1+\sqrt{1-\epsilon}}{\epsilon}.\end{equation}\]
+
+&lt;p&gt;Well, why not apply perturbation theory to this form? Expanding around
+$\epsilon = 0$ using a Taylor series, we immediately get&lt;/p&gt;
+
+\[\begin{equation}
+    x_-  = \frac{1}{2} + \frac{1}{8}\epsilon + \mathcal{O}(\epsilon ^2)\\
+    x_+  = \frac{2}{\epsilon } - \frac{1}{2} + O(\epsilon ).\end{equation}\]
+
+&lt;p&gt;Oh boy – as we set $\epsilon \rightarrow 0$, the second term solution
+goes towards infinity. Curse these second degree polynomials; they’re
+nonsense anyway; there’s no way this is rigorous; I should’ve studied
+art history..&lt;/p&gt;
+
+&lt;p&gt;The reader might be feeling quite betrayed. Have we really been beaten
+by a second degree polynomial of all things? Can’t a fella even trust
+elementary school algebra these days? Surely, when we &lt;em&gt;know&lt;/em&gt; the answer
+ahead of time, we must somehow be able to get a sense of it
+perturbatively!&lt;/p&gt;
+
+&lt;p&gt;We can. You see, the choice of equation
+$\eqref{eq:seconddegree}$ is not really unique, is it? We could
+multiply it on both sides by some number, and it would still be zero. We
+could then do the reverse operation at the end to get the roots in terms
+of our original variable $x$.&lt;/p&gt;
+
+&lt;p&gt;This helps us, because our problem clearly arises from the fact that
+we’re treating the highest order part of the polynomial perturbatively.
+Since removing that term reduces the number of roots by one, we can’t
+possibly find the second root by applying perturbation theory naively.
+We have to get rid of the $\epsilon$ in front of $x^2$ and move it to
+some other term by scaling $x$. In other words, we have to renormalize.
+Indeed, define a new variable $w = \epsilon x$. Then
+$\eqref{eq:seconddegree}$ is&lt;/p&gt;
+
+\[\begin{equation}
+    \epsilon x^2 - 2x + 1 \rightarrow \frac{1}{\epsilon ^2}w^2 - 2 \frac{w}{\epsilon} +1 = 0 \iff w^2 - 2\epsilon w + \epsilon ^2 = 0\end{equation}\]
+
+&lt;p&gt;Behold – all of our problems have disappeared. This form amenable to a
+perturbation treatment. You can solve this using the perturbation
+procedure outlined above and get a perfectly finite answer, and all we
+did is rescale the problem, just as you do in renormalizing QFT.&lt;/p&gt;
+
+&lt;p&gt;In some sense, the original variable $x$ just wasn’t good for what we
+were looking to do. We couldn’t recover two roots for a second order
+polynomial using that variable.&lt;/p&gt;
+
+&lt;p&gt;Of course, this problem is quite general with polynomial equations.
+Without changing variables, you’ll always get fewer roots than you
+should, and in fact the roots invisible to you are going to be sensitive
+to the perturbation parameter. Look at this polynomial:&lt;/p&gt;
+
+\[\begin{equation}
+    \epsilon x^6 + x^2 - 2x + 1 = 0 \label{eq:sixth}\end{equation}\]
+
+&lt;p&gt;The absolute values of as a function of $\epsilon$:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/simplyphysics/assets/zero_sizes.png&quot; alt=&quot;The zeros.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice how some of the values are highly sensitive to $\epsilon$, and
+they escape towards infinity as epsilon gets smaller (you can only see
+three, because they’re complex and have similar absolute values). Those
+are the values you wouldn’t find with perturbation theory.&lt;/p&gt;
+
+&lt;p&gt;Alright, you say, maybe this renormalization business isn’t so bad after
+all. I can now sleep my nights well and live without the constant
+anxiety caused by lurking infinities.&lt;/p&gt;
+
+&lt;p&gt;Hah, we’ve barely gotten started. If you thought our problems with
+quantum field theory end with the singularities of &lt;em&gt;polynomials&lt;/em&gt;, then I
+have bad news for you. Here’s another serving of despair.&lt;/p&gt;
+
+&lt;h1 id=&quot;i-got-99-problems&quot;&gt;I got 99 problems&lt;/h1&gt;
+
+&lt;p&gt;You see, just because you have managed to produce some finite terms in
+your little perturbation series, that doesn’t mean that the sum of those
+finite terms is in fact finite. Hell, look at this:&lt;/p&gt;
+
+\[\begin{equation}
+    S = \sum _{n=0}^\infty 2^n\end{equation}\]
+
+&lt;p&gt;Doesn’t look very finite, does it? So how do you know your series gives
+finite results?&lt;/p&gt;
+
+&lt;p&gt;To illustrate some divergent series, let’s take a nice normal function,
+not this crazy path integral business. Behold our guinea pig:&lt;/p&gt;
+
+\[\begin{equation}
+    Z = \int dxe^{-x^2 - \lambda x^4} \label{eq:normal}\end{equation}\]
+
+&lt;p&gt;Those familiar with QFT will note the suggestive name and form of this
+integral! Now evidently, if we have no &quot;interaction&quot; (the $x^4$ term),
+we get the result:&lt;/p&gt;
+
+\[\begin{equation}
+    Z = \sqrt{\pi}\end{equation}\]
+
+&lt;p&gt;The full solution to $\eqref{eq:normal}$ is&lt;/p&gt;
+
+\[\begin{equation}
+    \int e^{-x^2 - \lambda x^4}dx = \frac{e^{\frac{1}{8\lambda}}K_{1/4}\bigg(\frac{1}{8\lambda}\bigg)}{2\lambda} \label{eq:finite}\end{equation}\]
+
+&lt;p&gt;where $K$ is the modified Bessel function of the second kind – though
+it is not really important for our purposes here. The point is, in this
+case, we can solve the problem even without a &quot;perturbation series&quot;.
+But anyway, let us proceed as we would in field theory, where we want to
+treat the $\phi ^4$ term perturbatively. First&lt;/p&gt;
+
+\[\begin{equation}
+    \int d^4x e^{-x^2 - \lambda x^4} = \int d^4x e^{-x^2}e^{-\lambda x^4} = \sum _{n=0}^\infty \int d^4x e^{-x^2} \frac{(-\lambda x^4)^n}{n!}\end{equation}\]
+
+&lt;p&gt;Easy peasy. After some integrations and algebra, we get&lt;/p&gt;
+
+\[\begin{equation}
+    Z = \sum _{n=0}^\infty \sqrt{\pi}\frac{(-\lambda)^n(4n)!}{2^{4n}(2n)!n!} \label{eq:seriesexp}\end{equation}\]
+
+&lt;p&gt;Check with your favorite tool – this series is divergent.&lt;/p&gt;
+
+&lt;p&gt;Hold on! We started with a perfectly finite integral $\eqref{eq:finite}$, and ended up with an infinite series? Mumble mumble art history..&lt;/p&gt;
+
+&lt;p&gt;Here’s a question for you: when are you allowed to exchange the order of
+series and integral? Hint: not in this case. So we’ve created our
+problems by illegally changing the order of those two operations.
+Frankly, I’m shocked that a SWAT team has not bursted through my door as
+I write this – that’s how bad our math is. With finite intervals and
+finite sums, interchanging them is pretty much always allowed; but in
+the case of series and improper integrals, we have to be more careful
+than this.&lt;/p&gt;
+
+&lt;p&gt;The series in $\eqref{eq:seriesexp}$ is not hopeless, though. Here’s a funny plot:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/simplyphysics/assets/inf.png&quot; alt=&quot;Value of the series as a function of the number of terms
+included.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The red line is the correct answer calculated with the Bessel function.
+So you see, as long as you cut off the series before it gets wild, you
+will get a useful approximation. Essentially, we will get punished for
+our lack of mathematical rigor after some number of terms in the series,
+but not immediately; the first few terms give increasingly accurate
+approximations for our integral.&lt;/p&gt;
+
+&lt;p&gt;In fact, we can give an estimation as to when the series will start to
+diverge, but I won’t do so here for a simple reason: the estimate for
+quantum electrodynamics is about $\mathcal{O}(100)$. That means we could
+calculate dozens of terms in the series before running in to any trouble
+with divergences. However, only the first 5 or 6 orders have been
+calculated, and it’s unlikely we’ll ever get much further than that,
+since the number of Feynman diagrams in each term of the series keeps
+increasing very rapidly. It’s also not particularly useful to calculate
+more terms given the limits of current experiments – why calculate more
+terms than experimental accuracy allows for?&lt;/p&gt;
+
+&lt;p&gt;The point with regard to QFT is this: in forming a perturbation series
+in the (path integral) quantum field theory, we actually do a similar
+swap between integral and sum (see next section). That is why the series
+in QFT is divergent.&lt;/p&gt;
+
+&lt;p&gt;I have now battered you with two types of infinities – infinities in
+individual expressions and infinities in series summation – and solved
+them easily (hey, just like, cut off your series man!). What does this
+have to do with QFT exactly? Well, I’ve already given you some hints.
+The following section contains some detail that you can skip if you
+don’t care.&lt;/p&gt;
+
+&lt;h1 id=&quot;what-about-qft&quot;&gt;What About QFT?&lt;/h1&gt;
+
+&lt;p&gt;The main point of this text is that the infinities in QFT are not
+insurmountable, and that the problems discussed previously are in some
+sense analogous to problems in QFT. If you don’t care about QFT details,
+then you can skip this section.&lt;/p&gt;
+
+&lt;p&gt;Here’s how you do quantum field theory in the path integral formalism
+(which we use because it most conveniently illustrates the problem,
+though it also applies to the other formalisms). To get the propagator,
+you sum over all the fields like so:&lt;/p&gt;
+
+\[\begin{equation}
+    \langle 0 | T \phi (x) \phi (x&apos;) |0\rangle = \int D\phi \phi (x) \phi (x&apos;)e^{-\int d^4x \mathcal{L}} \label{eq:measure}\\
+    \mathcal{L} = \frac{1}{2}\phi (x)(\partial ^\mu \partial _\mu - m^2)\phi(x) - \lambda \phi ^4 + J(x)\phi (x)\end{equation}\]
+
+&lt;p&gt;Intuitively, this means &quot;integrate over all possible field
+configurations&quot;. So if you were to divide your space in to little
+squares, forming a grid, then this integral would be&lt;/p&gt;
+
+\[\begin{equation}
+    \int D \phi F[\phi] = \int d\phi _1 d\phi _2 ..d\phi _n F(\phi _1, \phi _2 ... \phi _n) \label{eq:fi}\end{equation}\]
+
+&lt;p&gt;with $\phi _i$ the value of the field at grid point $i$. In an intuitive
+sense, the integral in $\eqref{eq:measure}$ is the limit of $\eqref{eq:fi}$ as
+$n\rightarrow \infty$.&lt;/p&gt;
+
+&lt;p&gt;Let us also define&lt;/p&gt;
+
+\[\begin{equation}
+    Z[\phi] = \int D\phi e^{-\int d^4 x[ \mathcal{L} + J(x)\phi (x)]} \label{eq:Z}\end{equation}\]
+
+&lt;p&gt;Here, $\phi ^4$ is our interaction term and $J$ is an arbitrary source,
+such as some sort of magnetic field we wish to treat classically. Now it
+is easy to see that we can split this thing to two parts&lt;/p&gt;
+
+\[\begin{equation}
+    \int D\phi \phi (x) \phi (x&apos;) e^{-\int d^4x \mathcal{L}} \\
+     = \int D\phi \phi (x) \phi (x&apos;)e^{-\int d^4x \frac{1}{2}\phi (x)(\partial ^\mu \partial _\mu - m^2)\phi(x)+J(x)\phi (x)}e^{-\int d^4x \lambda \phi ^4} \label{eq:propagator}\end{equation}\]
+
+&lt;p&gt;Now, it is more obvious than obvious that we can write the last
+exponential term, which we have conveniently separated from the rest, as
+a series&lt;/p&gt;
+
+\[\begin{equation}
+    e^{-\lambda x^4}=\sum _{n=0}^\infty \frac{(-\lambda ^nx^{4n})}{n!}\end{equation}\]
+
+&lt;p&gt;By some tricks that I won’t go in to here, you can write&lt;/p&gt;
+
+\[\begin{equation}
+    \int D\phi e^{-\int d^4x \frac{1}{2}\phi (x)(\partial ^\mu \partial _\mu - m^2)\phi(x)+J(x)\phi (x)} = C e^{-\int d^4x J(x)G_F(x-y)J(y)}\end{equation}\]
+
+&lt;p&gt;Here $G_F$ is the Green’s function, just as you know from QFT (this
+result is valid even when there are prefactors in front of the
+exponential – sort of). $C$ is a constant that won’t concern us here.&lt;/p&gt;
+
+&lt;p&gt;We now note that, since&lt;/p&gt;
+
+\[\begin{equation}
+    e^{-\lambda x^4}=\sum _{n=0}^\infty \frac{(-\lambda x^{4})^n}{n!}\end{equation}\]
+
+&lt;p&gt;we can write this in terms of derivatives of $J$. You see,
+$\frac{\delta}{\delta J}e^{J\phi} = \phi e^{J\phi}$, so that&lt;/p&gt;
+
+\[\begin{equation}
+    \sum _{n=0}^\infty \frac{(-\lambda ^nx^{4n})}{n!} = \sum _n e^{\bigg( \frac{\delta}{\delta J(z)} \bigg)^{4n}}e^{Jx }\end{equation}\]
+
+&lt;p&gt;See how that works? Of course, the two $\phi$ - fields in front of the
+exponential in $\eqref{eq:propagator}$ can also be written as
+$\frac{\delta}{\delta J(x)}\frac{\delta}{\delta J(x’)}Z[\phi]$ (recall
+the definition of $Z$ from $\eqref{eq:Z}$). So putting this all together, the propagator is:&lt;/p&gt;
+
+\[\begin{equation}
+    \langle 0 |T \phi (x) \phi (x&apos;)|0\rangle = C\frac{\delta }{\delta J(x)}\frac{\delta }{\delta J(x&apos;)}\sum _{n=0}^\infty \frac{\lambda ^n \frac{\delta ^{4n}}{\delta J(z)^{4n}}}{n!}Z[\phi ]\end{equation}\]
+
+&lt;p&gt;Right? All we did is write a few terms with derivatives of $J$ and
+expand the interaction term $\lambda \phi ^4$ as a series. Easy! Only
+thing is.. this series diverges, even if you manage to renormalize.&lt;/p&gt;
+
+&lt;p&gt;What? Curse this quantum field.. well, by now, you catch my drift.&lt;/p&gt;
+
+&lt;p&gt;You see, we’ve made a bit of a blunder here. We’ve exchanged the sum
+from $n=0$ to $\infty$ with the integral in $Z[\phi]$. And we can’t do
+that in this instance – as we just saw with the exponential function!&lt;/p&gt;
+
+&lt;p&gt;Well then, you say, why even bother swapping the integral and the
+series? Just do the integral once and for all!&lt;/p&gt;
+
+&lt;p&gt;If you can do that, go ahead. I dare you. And when you’ve solved the
+full interacting theory like that, send me an email with the solution –
+I promise I totally won’t publish it without mentioning you and steal
+the Nobel.&lt;/p&gt;
+
+&lt;p&gt;The story with renormalization of individual terms of a series is the
+same. We use an inappropriate variable (&quot;bare mass&quot;, &quot;bare coupling
+constant&quot;, etc) to describe our theory and we get punished for it.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-problems-never-end&quot;&gt;The Problems Never End&lt;/h1&gt;
+
+&lt;p&gt;So, hopefully you’re convinced that infinities in themselves are no
+cause for panic. Still, quantum field theory is not without its
+problems. There are other mathematical issues in the formalism which
+have not been resolved. The best attempt at a rigorous QFT is the
+algebraic QFT framework – but nobody has even managed to formulate
+4-dimensional interacting theories in it; renormalization in QFT is
+essentially an unsolved problem, if you want total mathematical rigor.&lt;/p&gt;
+
+&lt;p&gt;Nevertheless, I hope this has helped to alleviate some of your disgust
+about the infinities in QFT. The divergences, though technically
+formidable compared to polynomials and simple integrals of one variable,
+are not really that concerning. Just as in the case of polynomials and
+exponential functions, there are reasonable ways to deal with the
+infinities that don’t involve &quot;sweeping them under the rug&quot;. This fact
+is simply obscured by the considerable technical difficulty in doing
+field theory calculations.&lt;/p&gt;
+
+&lt;p&gt;For practical purposes, QFT is just fine.&lt;/p&gt;
+
+&lt;h1 id=&quot;acknowledgement&quot;&gt;Acknowledgement&lt;/h1&gt;
+
+&lt;p&gt;The series material is lifted from &quot;How I Learned To Stop Worrying and
+Love QFT&quot; by R. C. Helling. The first polynomial perturbation example
+is standard, found for example in &quot;A First Look at Perturbation
+Theory&quot; by Simmonds and Mann. I can’t take credit for most of the
+ideas; I combined aspects of both of these sources with a bit of my own
+stuff added in to hopefully assist students struggling in QFT courses.&lt;/p&gt;</content><author><name></name></author><category term="quantum field theory" /><category term="quantum field theory" /><summary type="html">You’re listening to a lecture on quantum field theory. Finally, the equations of motion have been derived, the fields quantized and the reduction formulae derived. It is finally time to solve a real QFT problem – to do a perturbation theory calculation!</summary></entry><entry><title type="html">A Gentle Introduction to Computational Quantum Mechanics</title><link href="http://localhost:4000/simplyphysics/computational%20quantum%20mechanics/2023/08/29/intro-to-computational-qm.html" rel="alternate" type="text/html" title="A Gentle Introduction to Computational Quantum Mechanics" /><published>2023-08-29T00:00:00+03:00</published><updated>2023-08-29T00:00:00+03:00</updated><id>http://localhost:4000/simplyphysics/computational%20quantum%20mechanics/2023/08/29/intro-to-computational-qm</id><content type="html" xml:base="http://localhost:4000/simplyphysics/computational%20quantum%20mechanics/2023/08/29/intro-to-computational-qm.html">&lt;p&gt;This little text is intended as a very simple introduction to
 computational quantum mechanics. There are many books devoted to the
 topic, filled with one complicated algorithm after the other. Many
 people devote their whole careers to computational quantum mechanics.
@@ -175,7 +804,7 @@ finite intervals:&lt;/p&gt;
 &lt;p&gt;The second derivative approximation (well, one of them) is&lt;/p&gt;
 
 \[\begin{aligned}
-    \frac{d^2f}{dx^2} = \frac{f(x+h)+f(x-h)-2f(x)}{(\Delta x)^2}\end{aligned}\]
+    \frac{d^2f}{dx^2} = \frac{f(x+\Delta x)+f(x-\Delta x)-2f(x)}{(\Delta x)^2}\end{aligned}\]
 
 &lt;p&gt;(Can you derive this? Use the backward-difference definition for the
 derivative on the first derivative!)&lt;/p&gt;

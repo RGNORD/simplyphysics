@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      TeX: { equationNumbers: { autoNumber: "AMS" } }
+    });
+    </script>
+    <script>window.MathJax = { tex: { tags: 'all' } }; </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>An Emergency Help Document for Those Horrified, Disgusted or Otherwise Afflicted by Infinities in QFT | Simply Physics</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="An Emergency Help Document for Those Horrified, Disgusted or Otherwise Afflicted by Infinities in QFT" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="You’re listening to a lecture on quantum field theory. Finally, the equations of motion have been derived, the fields quantized and the reduction formulae derived. It is finally time to solve a real QFT problem – to do a perturbation theory calculation!" />
+<meta property="og:description" content="You’re listening to a lecture on quantum field theory. Finally, the equations of motion have been derived, the fields quantized and the reduction formulae derived. It is finally time to solve a real QFT problem – to do a perturbation theory calculation!" />
+<link rel="canonical" href="http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/09/15/horrifying-infinities.html" />
+<meta property="og:url" content="http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/09/15/horrifying-infinities.html" />
+<meta property="og:site_name" content="Simply Physics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-09-15T00:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="An Emergency Help Document for Those Horrified, Disgusted or Otherwise Afflicted by Infinities in QFT" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-09-15T00:00:00+03:00","datePublished":"2023-09-15T00:00:00+03:00","description":"You’re listening to a lecture on quantum field theory. Finally, the equations of motion have been derived, the fields quantized and the reduction formulae derived. It is finally time to solve a real QFT problem – to do a perturbation theory calculation!","headline":"An Emergency Help Document for Those Horrified, Disgusted or Otherwise Afflicted by Infinities in QFT","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/09/15/horrifying-infinities.html"},"url":"http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/09/15/horrifying-infinities.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/simplyphysics/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/simplyphysics/feed.xml" title="Simply Physics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/simplyphysics/">Simply Physics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/simplyphysics/about/">About</a><a class="page-link" href="/simplyphysics/categories/">Categories</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">An Emergency Help Document for Those Horrified, Disgusted or Otherwise Afflicted by Infinities in QFT</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-09-15T00:00:00+03:00" itemprop="datePublished">Sep 15, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>You’re listening to a lecture on quantum field theory. Finally, the
+equations of motion have been derived, the fields quantized and the
+reduction formulae derived. It is finally time to solve a real QFT
+problem – to do a perturbation theory calculation!</p>
+
+<p>All of a sudden – unprompted and unwanted – the calculation leads to a
+divergent integral. WHAT?? How can a physical quantity be infinite?</p>
+
+<p>Before you descend in to a frenzy, the lecturer provides much-needed
+assurance. There’s no problem, he explains – all we have to do is to
+regularize and renormalize! Just pretend the integral is finite after
+all by imposing some cutoff $\Lambda$ ("regularize"), and add some
+terms to your theory that remove the terms that go to infinity as the
+cutoff $\Lambda$ is removed ("renormalize").</p>
+
+<p>You’re horrified, of course. What do you mean, $renormalize?$ How can
+you just go ahead and pretend the integral is finite, then erase the
+terms you didn’t like? Curse this quantum field theory; it’s all
+nonsense anyway; there’s no way this can be rigorous; I should’ve
+studied art history..</p>
+
+<p>I’m here to tell you that the situation with infinities isn’t as bad as
+all that – it’s much worse. I’m also here to tell you that this is no
+reason to switch to art history. What sort of a coward fears a few
+measly infinities?</p>
+
+<h1 id="infinities-everywhere">Infinities everywhere</h1>
+
+<p>Instead of dealing with a difficult theory like QFT, let’s deal with
+something our tiny brains are more in tune with: polynomials and their
+roots.</p>
+
+<p>That’s right, it’s back to school. Polynomials! You can do them using
+perturbation theory, too.</p>
+
+<p>Suppose our polynomial is</p>
+
+\[\begin{align}
+    \epsilon x^2 - 2x + 1 = 0 \label{eq:seconddegree}\end{align}\]
+
+<p>and we say $\epsilon$ is a small number. Then we might guess the answer
+is of the form</p>
+
+\[\begin{equation}
+    x = x_0 + \epsilon x_1 + \mathcal{O}(\epsilon ^2)\end{equation}\]
+
+<p>Let’s insert our guess in to our polynomial:</p>
+
+\[\begin{equation}
+    \epsilon x^2 - 2x + 1 = \epsilon x_0^2 - 2(x_0 + \epsilon x_1)+1 = 0.\end{equation}\]
+
+<p>We’re neglecting all but first order terms. Remember that this must hold
+for arbitrary small $\epsilon$, so that we can divide this in to two
+equations, one involving the terms of zeroth order in $\epsilon$, and a
+first order equation. Like so:</p>
+
+\[\begin{equation}
+    - 2x_0 + 1 + \epsilon (x_0^2 - 2x_1)  = 0\\
+    \implies \begin{cases}
+        - 2x_0 + 1   = 0\\
+        x_0^2 - 2x_1  = 0
+    \end{cases}\end{equation}\]
+
+<p>Well, sure enough, we can solve the first equation easily: the solution
+is $x_0 = \frac{1}{2}$. Inserting that in to the second equation, we get</p>
+
+\[\begin{equation}
+    x_0^2 - 2x_1 = 0 \implies x_1 = \frac{1}{8}.\end{equation}\]
+
+<p>So the solution to our perturbation problem is
+$x = \frac{1}{2} + \frac{1}{8}\epsilon$. Easy!</p>
+
+<p>But wait – what? Second degree polynomials have two roots, everyone
+knows that. What happened?</p>
+
+<p>Well, we’ve all learned the formula for solving second degree
+polynomials, so let’s apply it. The exact solution of
+$\eqref{eq:seconddegree}$ is</p>
+
+\[\begin{equation}
+    x_-  = \frac{1-\sqrt{1-\epsilon}}{\epsilon}\\
+    x_+  = \frac{1+\sqrt{1-\epsilon}}{\epsilon}.\end{equation}\]
+
+<p>Well, why not apply perturbation theory to this form? Expanding around
+$\epsilon = 0$ using a Taylor series, we immediately get</p>
+
+\[\begin{equation}
+    x_-  = \frac{1}{2} + \frac{1}{8}\epsilon + \mathcal{O}(\epsilon ^2)\\
+    x_+  = \frac{2}{\epsilon } - \frac{1}{2} + O(\epsilon ).\end{equation}\]
+
+<p>Oh boy – as we set $\epsilon \rightarrow 0$, the second term solution
+goes towards infinity. Curse these second degree polynomials; they’re
+nonsense anyway; there’s no way this is rigorous; I should’ve studied
+art history..</p>
+
+<p>The reader might be feeling quite betrayed. Have we really been beaten
+by a second degree polynomial of all things? Can’t a fella even trust
+elementary school algebra these days? Surely, when we <em>know</em> the answer
+ahead of time, we must somehow be able to get a sense of it
+perturbatively!</p>
+
+<p>We can. You see, the choice of equation
+$\eqref{eq:seconddegree}$ is not really unique, is it? We could
+multiply it on both sides by some number, and it would still be zero. We
+could then do the reverse operation at the end to get the roots in terms
+of our original variable $x$.</p>
+
+<p>This helps us, because our problem clearly arises from the fact that
+we’re treating the highest order part of the polynomial perturbatively.
+Since removing that term reduces the number of roots by one, we can’t
+possibly find the second root by applying perturbation theory naively.
+We have to get rid of the $\epsilon$ in front of $x^2$ and move it to
+some other term by scaling $x$. In other words, we have to renormalize.
+Indeed, define a new variable $w = \epsilon x$. Then
+$\eqref{eq:seconddegree}$ is</p>
+
+\[\begin{equation}
+    \epsilon x^2 - 2x + 1 \rightarrow \frac{1}{\epsilon ^2}w^2 - 2 \frac{w}{\epsilon} +1 = 0 \iff w^2 - 2\epsilon w + \epsilon ^2 = 0\end{equation}\]
+
+<p>Behold – all of our problems have disappeared. This form amenable to a
+perturbation treatment. You can solve this using the perturbation
+procedure outlined above and get a perfectly finite answer, and all we
+did is rescale the problem, just as you do in renormalizing QFT.</p>
+
+<p>In some sense, the original variable $x$ just wasn’t good for what we
+were looking to do. We couldn’t recover two roots for a second order
+polynomial using that variable.</p>
+
+<p>Of course, this problem is quite general with polynomial equations.
+Without changing variables, you’ll always get fewer roots than you
+should, and in fact the roots invisible to you are going to be sensitive
+to the perturbation parameter. Look at this polynomial:</p>
+
+\[\begin{equation}
+    \epsilon x^6 + x^2 - 2x + 1 = 0 \label{eq:sixth}\end{equation}\]
+
+<p>The absolute values of as a function of $\epsilon$:</p>
+
+<p><img src="/simplyphysics/assets/zero_sizes.png" alt="The zeros." /></p>
+
+<p>Notice how some of the values are highly sensitive to $\epsilon$, and
+they escape towards infinity as epsilon gets smaller (you can only see
+three, because they’re complex and have similar absolute values). Those
+are the values you wouldn’t find with perturbation theory.</p>
+
+<p>Alright, you say, maybe this renormalization business isn’t so bad after
+all. I can now sleep my nights well and live without the constant
+anxiety caused by lurking infinities.</p>
+
+<p>Hah, we’ve barely gotten started. If you thought our problems with
+quantum field theory end with the singularities of <em>polynomials</em>, then I
+have bad news for you. Here’s another serving of despair.</p>
+
+<h1 id="i-got-99-problems">I got 99 problems</h1>
+
+<p>You see, just because you have managed to produce some finite terms in
+your little perturbation series, that doesn’t mean that the sum of those
+finite terms is in fact finite. Hell, look at this:</p>
+
+\[\begin{equation}
+    S = \sum _{n=0}^\infty 2^n\end{equation}\]
+
+<p>Doesn’t look very finite, does it? So how do you know your series gives
+finite results?</p>
+
+<p>To illustrate some divergent series, let’s take a nice normal function,
+not this crazy path integral business. Behold our guinea pig:</p>
+
+\[\begin{equation}
+    Z = \int dxe^{-x^2 - \lambda x^4} \label{eq:normal}\end{equation}\]
+
+<p>Those familiar with QFT will note the suggestive name and form of this
+integral! Now evidently, if we have no "interaction" (the $x^4$ term),
+we get the result:</p>
+
+\[\begin{equation}
+    Z = \sqrt{\pi}\end{equation}\]
+
+<p>The full solution to $\eqref{eq:normal}$ is</p>
+
+\[\begin{equation}
+    \int e^{-x^2 - \lambda x^4}dx = \frac{e^{\frac{1}{8\lambda}}K_{1/4}\bigg(\frac{1}{8\lambda}\bigg)}{2\lambda} \label{eq:finite}\end{equation}\]
+
+<p>where $K$ is the modified Bessel function of the second kind – though
+it is not really important for our purposes here. The point is, in this
+case, we can solve the problem even without a "perturbation series".
+But anyway, let us proceed as we would in field theory, where we want to
+treat the $\phi ^4$ term perturbatively. First</p>
+
+\[\begin{equation}
+    \int d^4x e^{-x^2 - \lambda x^4} = \int d^4x e^{-x^2}e^{-\lambda x^4} = \sum _{n=0}^\infty \int d^4x e^{-x^2} \frac{(-\lambda x^4)^n}{n!}\end{equation}\]
+
+<p>Easy peasy. After some integrations and algebra, we get</p>
+
+\[\begin{equation}
+    Z = \sum _{n=0}^\infty \sqrt{\pi}\frac{(-\lambda)^n(4n)!}{2^{4n}(2n)!n!} \label{eq:seriesexp}\end{equation}\]
+
+<p>Check with your favorite tool – this series is divergent.</p>
+
+<p>Hold on! We started with a perfectly finite integral $\eqref{eq:finite}$, and ended up with an infinite series? Mumble mumble art history..</p>
+
+<p>Here’s a question for you: when are you allowed to exchange the order of
+series and integral? Hint: not in this case. So we’ve created our
+problems by illegally changing the order of those two operations.
+Frankly, I’m shocked that a SWAT team has not bursted through my door as
+I write this – that’s how bad our math is. With finite intervals and
+finite sums, interchanging them is pretty much always allowed; but in
+the case of series and improper integrals, we have to be more careful
+than this.</p>
+
+<p>The series in $\eqref{eq:seriesexp}$ is not hopeless, though. Here’s a funny plot:</p>
+
+<p><img src="/simplyphysics/assets/inf.png" alt="Value of the series as a function of the number of terms
+included." /></p>
+
+<p>The red line is the correct answer calculated with the Bessel function.
+So you see, as long as you cut off the series before it gets wild, you
+will get a useful approximation. Essentially, we will get punished for
+our lack of mathematical rigor after some number of terms in the series,
+but not immediately; the first few terms give increasingly accurate
+approximations for our integral.</p>
+
+<p>In fact, we can give an estimation as to when the series will start to
+diverge, but I won’t do so here for a simple reason: the estimate for
+quantum electrodynamics is about $\mathcal{O}(100)$. That means we could
+calculate dozens of terms in the series before running in to any trouble
+with divergences. However, only the first 5 or 6 orders have been
+calculated, and it’s unlikely we’ll ever get much further than that,
+since the number of Feynman diagrams in each term of the series keeps
+increasing very rapidly. It’s also not particularly useful to calculate
+more terms given the limits of current experiments – why calculate more
+terms than experimental accuracy allows for?</p>
+
+<p>The point with regard to QFT is this: in forming a perturbation series
+in the (path integral) quantum field theory, we actually do a similar
+swap between integral and sum (see next section). That is why the series
+in QFT is divergent.</p>
+
+<p>I have now battered you with two types of infinities – infinities in
+individual expressions and infinities in series summation – and solved
+them easily (hey, just like, cut off your series man!). What does this
+have to do with QFT exactly? Well, I’ve already given you some hints.
+The following section contains some detail that you can skip if you
+don’t care.</p>
+
+<h1 id="what-about-qft">What About QFT?</h1>
+
+<p>The main point of this text is that the infinities in QFT are not
+insurmountable, and that the problems discussed previously are in some
+sense analogous to problems in QFT. If you don’t care about QFT details,
+then you can skip this section.</p>
+
+<p>Here’s how you do quantum field theory in the path integral formalism
+(which we use because it most conveniently illustrates the problem,
+though it also applies to the other formalisms). To get the propagator,
+you sum over all the fields like so:</p>
+
+\[\begin{equation}
+    \langle 0 | T \phi (x) \phi (x') |0\rangle = \int D\phi \phi (x) \phi (x')e^{-\int d^4x \mathcal{L}} \label{eq:measure}\\
+    \mathcal{L} = \frac{1}{2}\phi (x)(\partial ^\mu \partial _\mu - m^2)\phi(x) - \lambda \phi ^4 + J(x)\phi (x)\end{equation}\]
+
+<p>Intuitively, this means "integrate over all possible field
+configurations". So if you were to divide your space in to little
+squares, forming a grid, then this integral would be</p>
+
+\[\begin{equation}
+    \int D \phi F[\phi] = \int d\phi _1 d\phi _2 ..d\phi _n F(\phi _1, \phi _2 ... \phi _n) \label{eq:fi}\end{equation}\]
+
+<p>with $\phi _i$ the value of the field at grid point $i$. In an intuitive
+sense, the integral in $\eqref{eq:measure}$ is the limit of $\eqref{eq:fi}$ as
+$n\rightarrow \infty$.</p>
+
+<p>Let us also define</p>
+
+\[\begin{equation}
+    Z[\phi] = \int D\phi e^{-\int d^4 x[ \mathcal{L} + J(x)\phi (x)]} \label{eq:Z}\end{equation}\]
+
+<p>Here, $\phi ^4$ is our interaction term and $J$ is an arbitrary source,
+such as some sort of magnetic field we wish to treat classically. Now it
+is easy to see that we can split this thing to two parts</p>
+
+\[\begin{equation}
+    \int D\phi \phi (x) \phi (x') e^{-\int d^4x \mathcal{L}} \\
+     = \int D\phi \phi (x) \phi (x')e^{-\int d^4x \frac{1}{2}\phi (x)(\partial ^\mu \partial _\mu - m^2)\phi(x)+J(x)\phi (x)}e^{-\int d^4x \lambda \phi ^4} \label{eq:propagator}\end{equation}\]
+
+<p>Now, it is more obvious than obvious that we can write the last
+exponential term, which we have conveniently separated from the rest, as
+a series</p>
+
+\[\begin{equation}
+    e^{-\lambda x^4}=\sum _{n=0}^\infty \frac{(-\lambda ^nx^{4n})}{n!}\end{equation}\]
+
+<p>By some tricks that I won’t go in to here, you can write</p>
+
+\[\begin{equation}
+    \int D\phi e^{-\int d^4x \frac{1}{2}\phi (x)(\partial ^\mu \partial _\mu - m^2)\phi(x)+J(x)\phi (x)} = C e^{-\int d^4x J(x)G_F(x-y)J(y)}\end{equation}\]
+
+<p>Here $G_F$ is the Green’s function, just as you know from QFT (this
+result is valid even when there are prefactors in front of the
+exponential – sort of). $C$ is a constant that won’t concern us here.</p>
+
+<p>We now note that, since</p>
+
+\[\begin{equation}
+    e^{-\lambda x^4}=\sum _{n=0}^\infty \frac{(-\lambda x^{4})^n}{n!}\end{equation}\]
+
+<p>we can write this in terms of derivatives of $J$. You see,
+$\frac{\delta}{\delta J}e^{J\phi} = \phi e^{J\phi}$, so that</p>
+
+\[\begin{equation}
+    \sum _{n=0}^\infty \frac{(-\lambda ^nx^{4n})}{n!} = \sum _n e^{\bigg( \frac{\delta}{\delta J(z)} \bigg)^{4n}}e^{Jx }\end{equation}\]
+
+<p>See how that works? Of course, the two $\phi$ - fields in front of the
+exponential in $\eqref{eq:propagator}$ can also be written as
+$\frac{\delta}{\delta J(x)}\frac{\delta}{\delta J(x’)}Z[\phi]$ (recall
+the definition of $Z$ from $\eqref{eq:Z}$). So putting this all together, the propagator is:</p>
+
+\[\begin{equation}
+    \langle 0 |T \phi (x) \phi (x')|0\rangle = C\frac{\delta }{\delta J(x)}\frac{\delta }{\delta J(x')}\sum _{n=0}^\infty \frac{\lambda ^n \frac{\delta ^{4n}}{\delta J(z)^{4n}}}{n!}Z[\phi ]\end{equation}\]
+
+<p>Right? All we did is write a few terms with derivatives of $J$ and
+expand the interaction term $\lambda \phi ^4$ as a series. Easy! Only
+thing is.. this series diverges, even if you manage to renormalize.</p>
+
+<p>What? Curse this quantum field.. well, by now, you catch my drift.</p>
+
+<p>You see, we’ve made a bit of a blunder here. We’ve exchanged the sum
+from $n=0$ to $\infty$ with the integral in $Z[\phi]$. And we can’t do
+that in this instance – as we just saw with the exponential function!</p>
+
+<p>Well then, you say, why even bother swapping the integral and the
+series? Just do the integral once and for all!</p>
+
+<p>If you can do that, go ahead. I dare you. And when you’ve solved the
+full interacting theory like that, send me an email with the solution –
+I promise I totally won’t publish it without mentioning you and steal
+the Nobel.</p>
+
+<p>The story with renormalization of individual terms of a series is the
+same. We use an inappropriate variable ("bare mass", "bare coupling
+constant", etc) to describe our theory and we get punished for it.</p>
+
+<h1 id="the-problems-never-end">The Problems Never End</h1>
+
+<p>So, hopefully you’re convinced that infinities in themselves are no
+cause for panic. Still, quantum field theory is not without its
+problems. There are other mathematical issues in the formalism which
+have not been resolved. The best attempt at a rigorous QFT is the
+algebraic QFT framework – but nobody has even managed to formulate
+4-dimensional interacting theories in it; renormalization in QFT is
+essentially an unsolved problem, if you want total mathematical rigor.</p>
+
+<p>Nevertheless, I hope this has helped to alleviate some of your disgust
+about the infinities in QFT. The divergences, though technically
+formidable compared to polynomials and simple integrals of one variable,
+are not really that concerning. Just as in the case of polynomials and
+exponential functions, there are reasonable ways to deal with the
+infinities that don’t involve "sweeping them under the rug". This fact
+is simply obscured by the considerable technical difficulty in doing
+field theory calculations.</p>
+
+<p>For practical purposes, QFT is just fine.</p>
+
+<h1 id="acknowledgement">Acknowledgement</h1>
+
+<p>The series material is lifted from "How I Learned To Stop Worrying and
+Love QFT" by R. C. Helling. The first polynomial perturbation example
+is standard, found for example in "A First Look at Perturbation
+Theory" by Simmonds and Mann. I can’t take credit for most of the
+ideas; I combined aspects of both of these sources with a bit of my own
+stuff added in to hopefully assist students struggling in QFT courses.</p>
+
+  </div><a class="u-url" href="/simplyphysics/quantum%20field%20theory/2023/09/15/horrifying-infinities.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/simplyphysics/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Simply Physics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Simply Physics</li><li><a class="u-email" href="mailto:raygnordstrom@gmail.com">raygnordstrom@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/RGNORD"><svg class="svg-icon"><use xlink:href="/simplyphysics/assets/minima-social-icons.svg#github"></use></svg> <span class="username">RGNORD</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Physics ramblings by an alleged figure skater.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
