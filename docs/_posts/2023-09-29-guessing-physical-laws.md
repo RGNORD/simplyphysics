@@ -1,3 +1,9 @@
+---
+title: Guessing Physical Laws
+layout: post
+tag: statistical physics
+categories: ["general"]
+---
 Theoretical physics is a precise business. You choose your principles
 carefully, put them in to mathematical form and use rigorous logical
 deduction to infer consequences. Or perhaps you take a hithertho
