@@ -1,4 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/simplyphysics/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/simplyphysics/" rel="alternate" type="text/html" /><updated>2023-09-13T18:19:27+03:00</updated><id>http://localhost:4000/simplyphysics/feed.xml</id><title type="html">Simply Physics</title><subtitle>Physics ramblings by an alleged figure skater.</subtitle><entry><title type="html">Baby’s First Philosophy of Quantum Field Theory Article</title><link href="http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/10/13/taking-qft-seriously.html" rel="alternate" type="text/html" title="Baby’s First Philosophy of Quantum Field Theory Article" /><published>2023-10-13T00:00:00+03:00</published><updated>2023-10-13T00:00:00+03:00</updated><id>http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/10/13/taking-qft-seriously</id><content type="html" xml:base="http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/10/13/taking-qft-seriously.html">&lt;p&gt;If you’re even remotely interested in the philosophy of physics, you’ve
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/simplyphysics/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/simplyphysics/" rel="alternate" type="text/html" /><updated>2023-09-30T11:22:29+03:00</updated><id>http://localhost:4000/simplyphysics/feed.xml</id><title type="html">Simply Physics</title><subtitle>Physics ramblings by an alleged figure skater.</subtitle><entry><title type="html">Scaling in the Ising Model</title><link href="http://localhost:4000/simplyphysics/general/2023/10/27/ising-model-scaling.html" rel="alternate" type="text/html" title="Scaling in the Ising Model" /><published>2023-10-27T00:00:00+03:00</published><updated>2023-10-27T00:00:00+03:00</updated><id>http://localhost:4000/simplyphysics/general/2023/10/27/ising-model-scaling</id><content type="html" xml:base="http://localhost:4000/simplyphysics/general/2023/10/27/ising-model-scaling.html">&lt;p&gt;This is a first introduction to numerical renormalization methods. In
+terms of the code, I followed the tutorial in&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;basics-of-the-ising-model&quot;&gt;Basics of the Ising Model&lt;/h2&gt;
+
+&lt;p&gt;The Ising model is a well-studied and simple theory for magnetization.
+The basic idea of the model is to consider a grid (in our case, either
+1D chain or 2D grid) of spins, some of which &quot;point up&quot; (and thus have
+value +1) and some of which &quot;point down&quot; (have value -1). The energy
+of the system is then&lt;/p&gt;
+
+\[\begin{align}
+    E = -J\sum _{\langle ij\rangle} s_is_j \label{eq:energyising}\end{align}\]
+
+&lt;p&gt;with $\langle ij\rangle$ indicating nearest-neighbor sums. So, it is a
+very simple thing to compute: just go over each of the spins, and take
+products with its (non-diagonal) neighbors.&lt;/p&gt;
+
+&lt;p&gt;The code used for the graph in this text is just a basic Ising Monte
+Carlo code; since the model is a staple of physics teachers everywhere,
+it is easy to find tutorials on how to make your own. I won’t spend time
+on it in this article.&lt;/p&gt;
+
+&lt;h2 id=&quot;scaling&quot;&gt;Scaling&lt;/h2&gt;
+
+&lt;p&gt;The basic question of scaling (renormalization) methods is this: what
+happens if you zoom out of the system?&lt;/p&gt;
+
+&lt;p&gt;By zooming out, I mean the following. Take a grid containing, say,
+$9\cdot 9$ cells, with some arrangement of spins. What if we treated
+this grid in some averaged fashion to save some work?&lt;/p&gt;
+
+&lt;p&gt;This question pops up quite frequently in two places: particle physics
+and drinking in a bar. In particle physics, things like masses of
+particles going in to the equations are different depending on what
+energy scale you’re looking at. Calculations with &quot;bare&quot; masses tend
+to produce infinite results that have to be removed by basically
+inserting some energy-dependence. As for the bars, the attractiveness of
+your gender of choice tends to be directly correlated with the amount of
+alcohol you’ve consumed. Beware – a renormalized attractiveness scale
+may lead to regret in the morning (the equivalent situation in particle
+physics rarely causes distress).&lt;/p&gt;
+
+&lt;p&gt;Obviously, the dependence of our quantity of interest on $J$ in
+$\eqref{eq:energyising}$ doesn’t have to stay the same in this &quot;zooming
+out&quot; process. We must work out some way to find a function, say $R(J)$,
+which takes in a coupling constant and returns the coupling constant for
+a coarser model which keeps the magnetization unchanged.&lt;/p&gt;
+
+&lt;p&gt;How could we find this function? Well, first we must get the
+magnetization for the large grid, $9 \cdot 9$. Then we average over this
+grid somehow. For example, we could divide it in to blocks of size
+$3\cdot 3$, and have the spins in those blocks &quot;vote&quot;: if there are
+more up-spins than down-spins, the averaged block has an up spin, and
+vice versa. We now compute this &quot;coarse-grained&quot; (CG) magnetization.
+Then, we compare it to a native 3x3 grid, one where we didn’t average
+over the cells, but rather just did the calculation in the 3x3 system
+straight away. Here’s a picture of coarse graining:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/simplyphysics/assets/coarse-graining.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To recap, at this point we have two functions:
+$\langle M^2&lt;em&gt;{3\cdot 3}(J) \rangle$ and
+$\langle (M&lt;/em&gt;{3\cdot 3}^{CG }(J))^2\rangle$. But these two are not
+necessarily the same: coarse-grained magnetization probably doesn’t
+match the native 3x3 calculation.&lt;/p&gt;
+
+&lt;p&gt;If we want to see how to change J to get the same results in both
+methods, we have to find a function such that:&lt;/p&gt;
+
+\[\begin{aligned}
+    \langle (M_{9\cdot 9}^{CG }(J))^2\rangle = \langle M_{9\cdot 9}^2(J&apos;)\rangle, \quad J&apos;=R(J)\end{aligned}\]
+
+&lt;p&gt;So the sensible thing to do is to plot these two curves in the same
+plot, and try to work out the function $R(J)$ from there. We can see
+what the function is just visually by looking at the picture:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/simplyphysics/assets/magnetization_renorm.png&quot; alt=&quot;Magnetization for a coarse-grained and native grid. The intersection
+point indicates a fixed point.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can see that in the picture above.&lt;/p&gt;
+
+&lt;p&gt;What is the meaning of the point at which the lines cross? At those
+points, evidently, the coupling constants are same at both scales for
+the same magnetization. Remember that the calculation only depends on
+$\beta J=J/T$, not $\beta$ and $J$ separately; changing one is
+equivalent to changing the other. So at approximately the point
+$T = 2.3$, it doesn’t matter at which scale we look at the problem,
+coarse grained or not.&lt;/p&gt;
+
+&lt;p&gt;One of Ken Wilson’s great triumphs was understanding that these fixed
+points denote phase changes. In fact, a characteristic property of phase
+changes is that &lt;em&gt;they depend on all scales&lt;/em&gt;. When the magnet is changing
+from a ferromagnet to non-magnetic, it is not merely a local,
+small-scale phenomenon, nor is it merely a large-scale aggregate issue.
+When the phase change happens, it happens at every scale simultaneously;
+all scales, both long-range and short-range, high-energy and low-energy,
+contribute to the system. It is precisely this property that makes phase
+change so dramatic.&lt;/p&gt;
+
+&lt;p&gt;The relationship of this to renormalization in QFT is that it’s
+basically the same process. The masses and coupling constants depend on
+the scale. The method I’ve used in this post is just an extremely clumsy
+and bad way to figure out how things change at scale and where the phase
+transitions are, but there are better ones. I will look at one of them
+in the Part 2 of this series (stay tuned..).&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://clark.physics.illinois.edu/html/Ising/IsingModel.html&quot;&gt;https://clark.physics.illinois.edu/html/Ising/IsingModel.html&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name></name></author><category term="general" /><category term="quantum field theory" /><summary type="html">This is a first introduction to numerical renormalization methods. In terms of the code, I followed the tutorial in1. https://clark.physics.illinois.edu/html/Ising/IsingModel.html &amp;#8617;</summary></entry><entry><title type="html">Baby’s First Philosophy of Quantum Field Theory Article</title><link href="http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/10/13/taking-qft-seriously.html" rel="alternate" type="text/html" title="Baby’s First Philosophy of Quantum Field Theory Article" /><published>2023-10-13T00:00:00+03:00</published><updated>2023-10-13T00:00:00+03:00</updated><id>http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/10/13/taking-qft-seriously</id><content type="html" xml:base="http://localhost:4000/simplyphysics/quantum%20field%20theory/2023/10/13/taking-qft-seriously.html">&lt;p&gt;If you’re even remotely interested in the philosophy of physics, you’ve
 surely heard of quantum mechanics. Hell, nowadays quantum mechanics is
 even in your washing machine – who among us would use non-quantum
 soap?&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; No doubt you’ve heard all sorts of wonderful things about
