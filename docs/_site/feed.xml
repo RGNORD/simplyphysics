@@ -1,4 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/simplyphysics/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/simplyphysics/" rel="alternate" type="text/html" /><updated>2023-09-30T11:22:29+03:00</updated><id>http://localhost:4000/simplyphysics/feed.xml</id><title type="html">Simply Physics</title><subtitle>Physics ramblings by an alleged figure skater.</subtitle><entry><title type="html">Scaling in the Ising Model</title><link href="http://localhost:4000/simplyphysics/general/2023/10/27/ising-model-scaling.html" rel="alternate" type="text/html" title="Scaling in the Ising Model" /><published>2023-10-27T00:00:00+03:00</published><updated>2023-10-27T00:00:00+03:00</updated><id>http://localhost:4000/simplyphysics/general/2023/10/27/ising-model-scaling</id><content type="html" xml:base="http://localhost:4000/simplyphysics/general/2023/10/27/ising-model-scaling.html">&lt;p&gt;This is a first introduction to numerical renormalization methods. In
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/simplyphysics/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/simplyphysics/" rel="alternate" type="text/html" /><updated>2024-02-05T21:47:06+02:00</updated><id>http://localhost:4000/simplyphysics/feed.xml</id><title type="html">Simply Physics</title><subtitle>Physics ramblings by an alleged figure skater.</subtitle><entry><title type="html">Matrix Tricks in QM</title><link href="http://localhost:4000/simplyphysics/general/2024/04/01/qm-matrix-tricks.html" rel="alternate" type="text/html" title="Matrix Tricks in QM" /><published>2024-04-01T00:00:00+03:00</published><updated>2024-04-01T00:00:00+03:00</updated><id>http://localhost:4000/simplyphysics/general/2024/04/01/qm-matrix-tricks</id><content type="html" xml:base="http://localhost:4000/simplyphysics/general/2024/04/01/qm-matrix-tricks.html">&lt;p&gt;In a previous article on this site (“A Gentle Introduction to Computational Quantum Mechanics”) we derived a matrix form for the
+Hamiltonian in the time-independent Schrödinger equation. Let’s solve
+that Hamiltonian analytically. No Numpy needed for the special case of a
+particle in a box!&lt;/p&gt;
+
+&lt;p&gt;The standard textbook answer for the eigenenergies of a particle in a
+box is&lt;/p&gt;
+
+\[\begin{align}
+    E_n = \frac{n^2\pi ^2}{2L^2}.\end{align}\]
+
+&lt;p&gt;Let’s try to see if we can figure this out from the matrix form&lt;/p&gt;
+
+\[\begin{align}
+    D = -\frac{1}{2(\Delta x)^2} \begin{bmatrix}
+        -2 &amp;amp; 1 &amp;amp; 0 &amp;amp;  \cdots \\
+        1 &amp;amp; -2 &amp;amp; 1 &amp;amp;  \ddots  \\
+        0 &amp;amp; 1 &amp;amp; -2 &amp;amp;  \ddots \\
+        \vdots &amp;amp; \ddots &amp;amp; \ddots &amp;amp; \ddots 
+    \end{bmatrix}.\end{align}\]
+
+&lt;p&gt;It turns out that this sort of matrix is called a &quot;tridiagonal Toeplitz
+matrix&quot;. We can simply take the eigenvalues from the literature; they
+are&lt;/p&gt;
+
+\[\begin{align}
+    E_n=a-2\sqrt{bc} \cos \bigg(\frac{n \pi }{N+1}\bigg)\end{align}\]
+
+&lt;p&gt;where $a$ are the diagonal entries, $b$ and $c$ are the offdiagonal
+entries. In our case, $a=1/(\Delta x)^2$ and $b=c=-0.5/(\Delta x)^2$ and
+$N\cdot N$ is the size of the matrix.&lt;/p&gt;
+
+&lt;p&gt;Presuming $N\gg 1$, we can approximate $N+1\approx N$ and take the
+Taylor series of $\cos$, to wit&lt;/p&gt;
+
+\[\begin{align}
+    \cos \bigg( \frac{n\pi }{N+1} \bigg) \approx \cos \bigg( \frac{n\pi }{N} \bigg) \approx 1 - \frac{n^2 \pi ^2 }{2N^2}.\end{align}\]
+
+&lt;p&gt;Now, since our matrix comes from discretizing the space in to N+1
+intervals with N gridpoints, evidently $N = L/\Delta x$. Hence&lt;/p&gt;
+
+\[\begin{align}
+    1 - \frac{n^2 \pi ^2 }{2N^2} = 1 - \frac{n^2 \pi ^2 (\Delta x)^2 }{2L^2}.\label{eq:finalcos}\end{align}\]
+
+&lt;p&gt;Plugging in $\eqref{eq:finalcos}$ and the values for $a,b$ and $c$, we
+get&lt;/p&gt;
+
+\[\begin{align}
+    E_n =\frac{1}{(\Delta x)^2} - \frac{1}{(\Delta x)^2}\bigg( 1-\frac{n^2 \pi ^2 (\Delta x)^2 }{2L^2}\bigg) = \frac{n^2\pi ^2 }{2L ^2}\end{align}\]
+
+&lt;p&gt;which is precisely what we would get by standard methods.&lt;/p&gt;
+
+&lt;p&gt;Well, you say, it’s not a very impressive trick – this is a very
+special form of matrix. If we added a potential, then all the entries on
+the diagonal wouldn’t be the same and we wouldn’t get such a pretty
+result.&lt;/p&gt;
+
+&lt;p&gt;True! There is one more exception: if we add 1 to the top right and
+bottom left corners – indicating periodic boundary conditions – the
+matrix is still solvable (it is now a circulant matrix). It is also
+possible to apply the perturbation theory of matrices&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; to get more
+analytical results, even for more unusual matrix types.&lt;/p&gt;
+
+&lt;p&gt;This technique is not very useful in practice, but it was a funny find
+anyway. If you find more quantum systems solvable in this way, I would
+be interested – contact me.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Kato’s book &quot;Perturbation theory of linear operators&quot; is the
+definitive resource for this. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name></name></author><category term="general" /><category term="quantum mechanics" /><summary type="html">In a previous article on this site (“A Gentle Introduction to Computational Quantum Mechanics”) we derived a matrix form for the Hamiltonian in the time-independent Schrödinger equation. Let’s solve that Hamiltonian analytically. No Numpy needed for the special case of a particle in a box!</summary></entry><entry><title type="html">Scaling in the Ising Model</title><link href="http://localhost:4000/simplyphysics/general/2024/03/16/ising-model-scaling.html" rel="alternate" type="text/html" title="Scaling in the Ising Model" /><published>2024-03-16T00:00:00+02:00</published><updated>2024-03-16T00:00:00+02:00</updated><id>http://localhost:4000/simplyphysics/general/2024/03/16/ising-model-scaling</id><content type="html" xml:base="http://localhost:4000/simplyphysics/general/2024/03/16/ising-model-scaling.html">&lt;p&gt;This is a first introduction to numerical renormalization methods. In
 terms of the code, I followed the tutorial in&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;basics-of-the-ising-model&quot;&gt;Basics of the Ising Model&lt;/h2&gt;
